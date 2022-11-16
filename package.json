@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-start": "ts-node-dev src/index.ts",
-    "start": "node index.js",
-    "build": "tsc"
+    "start": "node dist/index.js",
+    "postinstall": "tsc"
   },
   "author": "Subhamrit",
   "license": "ISC",
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.7.2"
   }
