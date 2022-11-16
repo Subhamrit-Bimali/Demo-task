@@ -33,6 +33,9 @@ async function createPatient(patientData: PatientType) {
 async function deletePatient(patientId: String) {
   try {
     const patient = await Patient.deleteOne({ patientId });
+    if (!patient.deletedCount) {
+      throw new Error("Patient Id not found");
+    }
     return patient;
   } catch (err: any) {
     console.log(err);
@@ -42,12 +45,14 @@ async function deletePatient(patientId: String) {
 
 async function updatePatient(patientId: String, patientData: PatientType) {
   try {
-    console.log(patientData);
     const patient = await Patient.findOneAndUpdate(
       { patientId: patientId },
       { $set: { ...patientData } },
       { new: true }
     );
+    if (!patient?._id) {
+      throw new Error("Patient Id not found");
+    }
     return patient;
   } catch (err: any) {
     console.log(err);

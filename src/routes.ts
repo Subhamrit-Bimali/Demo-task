@@ -59,7 +59,6 @@ router.put(
       const patientData = req.body;
 
       const { patientId } = req.params;
-      console.log(patientData, patientId, "asdasdasd");
       const data = await updatePatient(patientId, patientData);
       res.status(200).json({
         response: { message: "Patient updated Successfully", data: data },
@@ -72,7 +71,6 @@ router.put(
 );
 router.get("/api/get-patient", async (req: Request, res: Response) => {
   try {
-    console.log(req.query);
     const { patientId } = req.query;
     const data = await getPatient(patientId);
     res.status(200).json({
