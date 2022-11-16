@@ -7,6 +7,16 @@ const {
   getPatient,
 } = require("./controller/patientController");
 const router = express.Router();
+
+router.get("/", (req: Request, res: Response) => {
+  try {
+    res.status(200).send("<h1>Demo Task CRUD API</h1>");
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json({ response: err.message });
+  }
+});
+
 router.get("/api/get-patients", async (req: Request, res: Response) => {
   try {
     const data = await getPatients();
